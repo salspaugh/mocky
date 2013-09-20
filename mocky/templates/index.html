@@ -9,27 +9,23 @@
 
 {% block body_content %}
     <div class="row-fluid">
-        <div class="span5">
-            <svg class="histogram"></svg>
-            <script type="text/javascript" src="static/histogram.js"></script>
+    {% for spec in recommendations %}
+        <div class="span5 {{ loop.index }}">
+            <svg class="{{ loop.index }}" height="400" width="400"></svg>
+            <script>
+                function parse(spec) {
+                    console.log(spec)
+                    vg.parse.spec(spec, function(chart) { chart({el:.{{loop.index}} }).update(); });
+                }
+                console.log({{ spec|tojson|safe }});
+                parse({{ spec|tojson|safe }});
+            </script>
         </div>
-        <div class="span5">
-            <svg class="linechart"></svg>
-            <script type="text/javascript" src="static/linechart.js"></script>
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span5">
-            <svg class="scatterplot"></svg>
-            <script type="text/javascript" src="static/scatterplot.js"></script>
-        </div>
-        <div class="span5">
-        </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span5">
-        </div>
-        <div class="span5">
-        </div>
-    </div>
+        {% if loop.index is even %}
+            </div> 
+            {% if loop.revindex > 1 %}
+                <div class="row-fluid">
+            {% endif %}
+        {% endif %}
+    {% endfor %}
 {% endblock %}
