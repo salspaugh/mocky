@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block sidebar_content %}
+<ul class="nav nav-list">
+  <li class="nav-header">List header</li>
+  <li><a href="#">Load Data</a></li>
+</ul>
+{% endblock %}
+
+{% block body_content %}
+    <div class="row-fluid">
+        <div class="span5">
+            <svg class="histogram"></svg>
+            <script type="text/javascript" src="static/histogram.js"></script>
+        </div>
+        <div class="span5">
+            <svg class="linechart"></svg>
+            <script type="text/javascript" src="static/linechart.js"></script>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span5">
+            <svg class="scatterplot"></svg>
+            <script type="text/javascript" src="static/scatterplot.js"></script>
+        </div>
+        <div class="span5">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span5">
+        </div>
+        <div class="span5">
+        </div>
+    </div>
+{% endblock %}

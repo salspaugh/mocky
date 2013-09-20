@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Mocky</title>
+    <link rel="stylesheet" type="text/css" media="screen" 
+        href={{ url_for('static', filename='bootstrap.min.css') }}>
+    <script type="text/javascript" src="static/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="static/d3.v3.min.js"></script>
+    <script type="text/javascript" src="static/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/mocky.js"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body style="padding: 50px">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span2">
+                {% block sidebar_content %}
+                {% endblock %}
+            </div>
+            <div class="span10" style="padding-left: 20px">
+                {% block body_content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</body>
+</html>
+
