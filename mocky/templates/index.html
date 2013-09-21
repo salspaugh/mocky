@@ -11,14 +11,13 @@
     <div class="row-fluid">
     {% for spec in recommendations %}
         <div class="span5 {{ loop.index }}">
-            <svg class="{{ loop.index }}" height="400" width="400"></svg>
+            <div class="frame_{{ loop.index }}" id="{{ loop.index }}" height="400" width="400"></div>
             <script>
                 function parse(spec) {
-                    console.log(spec)
-                    vg.parse.spec(spec, function(chart) { chart({el:.{{loop.index}} }).update(); });
+                    var spec = JSON.parse(spec)
+                    vg.parse.spec(spec, function(chart) { chart({el:".frame_{{ loop.index }}"}).update(); });
                 }
-                console.log({{ spec|tojson|safe }});
-                parse({{ spec|tojson|safe }});
+                parse({{ spec|tojson|safe }})
             </script>
         </div>
         {% if loop.index is even %}
