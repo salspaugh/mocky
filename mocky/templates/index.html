@@ -2,8 +2,8 @@
 
 {% block sidebar_content %}
 <ul class="nav nav-list">
-  <li class="nav-header">List header</li>
-  <li><a href="#">Load Data</a></li>
+  <li class="nav-header">Data Options</li>
+  <li><a href="#">Add Data</a></li>
 </ul>
 {% endblock %}
 
@@ -11,29 +11,47 @@
     <div class="row-fluid">
     {% for spec in recommendations %}
         <div class="span5 {{ loop.index }}">
-            <div class="btn-toolbar">
-                <div class="btn">
-                    Button
-                </div>
-                <div class="btn-group">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                        Action
-                        <span class="caret"></span>
-                    </a>
+            <form action="{{ url_for("recommendations") }}" method="post">
+            <input type="hidden" name="data" value="">
+                <div class="btn-toolbar">
+                    <div class="btn btn-mini btn-link"><i class="icon-star"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-info-sign"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-edit"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-folder-open"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-flag"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-remove"></i></div>
+                    <div class="btn-group">
+                        <a class="btn btn-mini btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-chevron-down"></i>
+                            <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu">
-                              <li><a tabindex="-1" href="#">Action</a></li>
-                              <li><a tabindex="-1" href="#">Another action</a></li>
-                              <li><a tabindex="-1" href="#">Something else here</a></li>
-                              <li class="divider"></li>
-                              <li><a tabindex="-1" href="#">Separated link</a></li>
+                            <li><a tabindex="-1" href="#" id="more_{{ loop.index }}">similar color</a></li>
+                            <li><a tabindex="-1" href="#">Another action</a></li>
+                            <li><a tabindex="-1" href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a tabindex="-1" href="#">Separated link</a></li>
                         </ul>
-                </div>
-            </div>            
-            <div class="frame_{{ loop.index }}" id="{{ loop.index }}" height="400" width="400"></div>
+                    </div>
+                </div>            
+            </form>
+            <script>
+                $("#more_{{ loop.index }}").click(function(e) {
+                    var data = {{ spec|tojson|safe }};
+                    var form = $(this).closest("form");
+                    form.find("input[name=data]").val(data);
+                    form.submit();
+                });
+            </script>
+            <div id="frame_{{ loop.index }}" height="400" width="400"></div>
             <script>
                 function parse(spec) {
                     var spec = JSON.parse(spec)
-                    vg.parse.spec(spec, function(chart) { chart({el:".frame_{{ loop.index }}"}).update(); });
+                    vg.parse.spec(spec, function(chart) { chart({el:"#frame_{{ loop.index }}"}).update(); });
                 }
                 parse({{ spec|tojson|safe }})
             </script>
