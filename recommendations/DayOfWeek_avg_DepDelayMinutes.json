@@ -1,0 +1,11 @@
+{
+    "columns": ["DayOfWeek", "DepDelayMinutes"],
+    "transformations": [
+        {
+            "avg": "DepDelayMinutes"
+        }
+    ],
+    "query": "select DayOfWeek,avg(DepDelayMinutes) from faa group by DayOfWeek;"
+}
+
+

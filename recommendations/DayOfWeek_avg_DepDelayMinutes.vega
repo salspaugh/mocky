@@ -1,0 +1,144 @@
+{
+  "width": 200,
+  "height": 200,
+  "padding": {
+    "top": 10,
+    "left": 60,
+    "bottom": 60,
+    "right": 10
+  },
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {
+          "DayOfWeek": "1",
+          "avgDepDelayMinutes": "1305.91965670711"
+        },
+        {
+          "DayOfWeek": "2",
+          "avgDepDelayMinutes": "1305.6465382225"
+        },
+        {
+          "DayOfWeek": "3",
+          "avgDepDelayMinutes": "1311.15657391611"
+        },
+        {
+          "DayOfWeek": "4",
+          "avgDepDelayMinutes": "1315.95722047469"
+        },
+        {
+          "DayOfWeek": "5",
+          "avgDepDelayMinutes": "1316.08381907538"
+        },
+        {
+          "DayOfWeek": "6",
+          "avgDepDelayMinutes": "1270.99843822627"
+        },
+        {
+          "DayOfWeek": "7",
+          "avgDepDelayMinutes": "1348.00428868819"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "ordinal",
+      "range": "width",
+      "domain": {
+        "data": "table",
+        "field": "data.DayOfWeek"
+      }
+    },
+    {
+      "name": "y",
+      "range": "height",
+      "nice": true,
+      "domain": {
+        "data": "table",
+        "field": "data.avgDepDelayMinutes"
+      }
+    }
+  ],
+  "axes": [
+    {
+      "type": "x",
+      "scale": "x",
+      "title": "Day of Week",
+      "offset": 3,
+      "tickSize": 0,
+      "properties": {
+        "axis": {
+          "stroke": {
+            "value": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "type": "y",
+      "scale": "y",
+      "title": "Average Delay Per Flight (Minutes)",
+      "offset": 3,
+      "ticks": 4,
+      "tickSize": 0,
+      "grid": true,
+      "properties": {
+        "grid": {
+          "stroke": {
+            "value": "white"
+          },
+          "strokeWidth": {
+            "value": 2
+          }
+        },
+        "axis": {
+          "stroke": {
+            "value": "transparent"
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "x": {
+            "scale": "x",
+            "field": "data.DayOfWeek"
+          },
+          "width": {
+            "scale": "x",
+            "band": true,
+            "offset": -2
+          },
+          "y": {
+            "scale": "y",
+            "field": "data.avgDepDelayMinutes"
+          },
+          "y2": {
+            "scale": "y",
+            "value": 0
+          }
+        },
+        "update": {
+          "fill": {
+            "value": "steelblue"
+          }
+        },
+        "hover": {
+          "fill": {
+            "value": "lightsteelblue"
+          }
+        }
+      }
+    }
+  ]
+}
