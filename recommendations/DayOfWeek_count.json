@@ -1,0 +1,9 @@
+{
+    "columns": ["DayOfWeek"],
+    "transformations": [
+        {
+            "count": "*"
+        }
+    ],
+    "query": "select DayOfWeek, count(*) from faa group by DayOfWeek;"
+}

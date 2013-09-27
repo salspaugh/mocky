@@ -1,0 +1,9 @@
+{
+    "columns": ["UniqueCarrier"],
+    "transformations": [
+        {
+            "count": "*"
+        }
+    ],
+    "query": "select UniqueCarrier, count(*) as c from faa group by UniqueCarrier order by c;"
+}

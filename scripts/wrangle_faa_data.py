@@ -1,6 +1,22 @@
 
 import csv
 
+def fix_csv(csvfile):
+    first = True
+    count = 0
+    with open(csvfile) as csvdata:
+        reader = csv.reader(csvdata)
+        for row in reader:
+            if first:
+                first = False
+                continue
+            row = [r.replace(",", "") for r in row]
+            row.insert(0, str(count))
+            print ",".join(row)
+            count += 1
+
+fix_csv("data/faa/On_Time_On_Time_Performance_2013_1.csv")
+
 def print_column_names(csvfile):
     with open(csvfile) as csvdata:
         reader = csv.reader(csvdata)
@@ -39,16 +55,3 @@ def add_id(csvfile):
             row.insert(0, count)
             print ",".join([str(r) for r in row])
             count += 1
-
-#transpose_some_rows("mocky/data/faa/ontime_performance_2013_1_noheader.csv")
-#transpose_some_rows("mocky/data/faa/tmp")
-transpose_some_rows("foo")
-
-def loaddb(csvfile):
-    with open(csvfile) as csvdata:
-        reader = csv.reader(csvdata)
-        first = True
-        for row in reader:
-            if first:
-                first = False
-                continue
