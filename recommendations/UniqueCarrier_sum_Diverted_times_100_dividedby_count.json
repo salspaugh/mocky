@@ -1,0 +1,12 @@
+{
+    "columns": ["UniqueCarrier", "Diverted"],
+    "transformations": [
+        {
+            "sum": "Diverted",
+            "times": "",
+            "dividedby": "",
+            "count": "*"
+        }
+    ],
+    "query": "select UniqueCarrier, sum(Diverted)*100.0 / count(*) as s from faa group by UniqueCarrier order by s;"
+}

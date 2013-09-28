@@ -1,0 +1,9 @@
+{
+    "columns": ["FlightDate", "DepDelayMinutes"],
+    "transformations": [
+        {
+            "avg": "DepDelayMinutes"
+        }
+    ],
+    "query": "select FlightDate, avg(DepDelayMinutes) from faa group by FlightDate order by FlightDate;"
+}

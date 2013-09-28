@@ -1,0 +1,9 @@
+{
+    "columns": ["FlightDate"],
+    "transformations": [
+        {
+            "count": "*"
+        }
+    ],
+    "query": "select FlightDate, count(*) from faa group by FlightDate order by FlightDate;"
+}

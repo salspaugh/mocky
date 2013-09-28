@@ -1,5 +1,5 @@
 
-from flask import g, request, render_template, url_for
+from flask import g, request, render_template, send_from_directory, url_for
 from werkzeug import secure_filename
 
 from mocky import app
@@ -12,3 +12,11 @@ def recommendations():
     elif request.method == "POST":
         recommendations = api.recommendations_like_this(request.form["data"])
     return render_template("index.html", recommendations=recommendations)
+
+@app.route("/data/<path:filename>")
+def data(filename):
+    print "HERE"
+    return send_from_directory("data", filename) 
+
+
+    

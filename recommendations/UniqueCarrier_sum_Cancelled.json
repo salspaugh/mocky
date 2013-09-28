@@ -1,0 +1,9 @@
+{
+    "columns": ["UniqueCarrier", "Cancelled"],
+    "transformations": [
+        {
+            "sum": "Cancelled"
+        }
+    ],
+    "query": "select UniqueCarrier, sum(Cancelled) as s from faa group by UniqueCarrier order by s;"
+}

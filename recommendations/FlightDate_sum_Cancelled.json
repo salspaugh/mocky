@@ -1,0 +1,9 @@
+{
+    "columns": ["FlightDate", "Cancelled"],
+    "transformations": [
+        {
+            "sum": "Cancelled"
+        }
+    ],
+    "query": "select FlightDate, sum(Cancelled) from faa group by FlightDate order by FlightDate;"
+}

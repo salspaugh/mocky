@@ -1,0 +1,9 @@
+{
+    "columns": ["UniqueCarrier", "DepDelayMinutes"],
+    "transformations": [
+        {
+            "avg": "DepDelayMinutes"
+        }
+    ],
+    "query": "select UniqueCarrier, avg(DepDelayMinutes) as a from faa group by UniqueCarrier order by a;"
+}

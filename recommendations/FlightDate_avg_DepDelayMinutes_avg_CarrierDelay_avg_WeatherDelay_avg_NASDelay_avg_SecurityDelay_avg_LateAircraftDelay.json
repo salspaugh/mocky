@@ -1,0 +1,16 @@
+{
+    "columns": ["FlightDate", "DepDelayMinutes", "CarrierDelay", "WeatherDelay", "NASDelay", "SecurityDelay", "LateAircraftDelay"],
+    "transformations": [
+        {
+            "avg": "DepDelayMinutes",
+            "avg": "CarrierDelay",
+            "avg": "WeatherDelay",
+            "avg": "NASDelay",
+            "avg": "SecurityDelay",
+            "avg": "LateAircraftDelay"
+        }
+    ],
+    "query": "select FlightDate, avg(DepDelayMinutes), avg(CarrierDelay), avg(WeatherDelay), avg(NASDelay), avg(SecurityDelay), avg(LateAircraftDelay) from faa group by FlightDate order by FlightDate;"
+}
+
+
