@@ -1,4 +1,4 @@
-FlightDate,sum(Cancelled)
+FlightDate,c
 2013-01-01,116
 2013-01-02,145
 2013-01-03,123
