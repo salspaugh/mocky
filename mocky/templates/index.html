@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block sidebar_content %}
-<ul class="nav nav-list">
+<ul class="nav nav-list" style="padding: 0">
   <li class="nav-header">Data Options</li>
-  <li><a href="#">Add Data</a></li>
+  <li><i>Currently Loaded:</i><a href="#">FAA On-Time Performance</a></li>
+  <li><a href="#"><i>Add More Data</i></a></li>
 </ul>
 {% endblock %}
 
@@ -14,11 +15,11 @@
             <form action="{{ url_for("recommendations") }}" method="post">
             <input type="hidden" name="data" value="">
                 <div class="btn-toolbar">
-                    <div class="btn btn-mini btn-link"><i class="icon-star"></i></div>
-                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
-                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
-                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
-                    <div class="btn btn-mini btn-link"><i class="icon-star-empty"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty star" id="star1_{{ loop.index }}"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty star" id="star2_{{ loop.index }}"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty star" id="star3_{{ loop.index }}"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty star" id="star4_{{ loop.index }}"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-star-empty star" id="star5_{{ loop.index }}"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-info-sign"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-edit"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-folder-open"></i></div>
@@ -43,6 +44,30 @@
                     var form = $(this).closest("form");
                     form.find("input[name=data]").val(data);
                     form.submit();
+                });
+
+                $(".star").click(function(e) {
+                    if ($(this).attr("class").indexOf("icon-star-empty") > -1) {
+                        var id = $(this).attr("id");
+                        var num = parseInt(id[4]);
+                        var idx = id.slice(6);
+                        for (i=num; i>0; i--){
+                            var selector = "#star" + i + "_" + idx;
+                            console.log(selector);
+                            $(selector).attr("class", "icon-star star"); 
+                        }
+                    }
+                    else {
+                        var id = $(this).attr("id");
+                        var num = parseInt(id[4]);
+                        var idx = id.slice(6);
+                        for (i=num; i<=5; i++){
+                            var selector = "#star" + i + "_" + idx;
+                            console.log(selector);
+                            $(selector).attr("class", "icon-star-empty star"); 
+                        }
+                        
+                    }
                 });
             </script>
             <div id="frame_{{ loop.index }}" height="400" width="400"></div>
