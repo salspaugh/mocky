@@ -1,6 +1,0 @@
-{
-    "columns": ["Distance", "ActualElapsedTime"],
-    "transformations": [
-    ],
-    "query": "select Distance as x, ActualElapsedTime as y from faa where ActualElapsedTime!="" limit 1000;"
-}

@@ -1,9 +1,0 @@
-{
-    "columns": ["CancellationCode"],
-    "transformations": [
-        {
-            "count": "*"
-        }
-    ],
-    "query": "select CancellationCode, count(*) from faa where Cancelled=1 group by CancellationCode;"
-}

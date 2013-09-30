@@ -1,9 +1,0 @@
-{
-    "columns": ["OriginCityName", "DestCityName"],
-    "transformations": [
-        {
-            "count": "*"
-        }
-    ],
-    "query": "select OriginCityName, DestCityName, count(*) as c from faa group by OriginCityName, DestCityName order by c;"
-}

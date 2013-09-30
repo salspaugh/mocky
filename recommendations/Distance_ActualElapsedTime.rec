@@ -1,0 +1,60 @@
+{ 
+    "columns": ["Distance", "ActualElapsedTime"],
+    "transformations": [
+    ],
+    "query": "select Distance as x, ActualElapsedTime as y from faa where ActualElapsedTime!='' limit 1000;",
+    "display": 1,
+    "flagged": 0,
+    "stars": 0,
+    "vega": {
+      "width": 200,
+      "height": 200,
+      "data": [
+        {
+          "name": "table",
+          "url": "data/Distance_ActualElapsedTime.csv",
+          "format": {"type": "csv", "parse": {"x": "number", "y": "number"}}
+        }
+      ],
+      "scales": [
+        {
+          "name": "x",
+          "nice": true,
+          "range": "width",
+          "domain": {"data": "table", "field": "data.x"}
+        },
+        {
+          "name": "y",
+          "nice": true,
+          "range": "height",
+          "domain": {"data": "table", "field": "data.y"}
+        }
+      ],
+      "axes": [
+        {"type": "x", "scale": "x", "offset": 5, "ticks": 5, "title": "Distance (Miles)"},
+        {"type": "y", "scale": "y", "offset": 5, "ticks": 5, "title": "Actual Elapsed Flight Time (Minutes)"}
+      ],
+      "marks": [
+        {
+          "type": "symbol",
+          "from": {"data": "table"},
+          "properties": {
+            "enter": {
+              "x": {"scale": "x", "field": "data.x"},
+              "y": {"scale": "y", "field": "data.y"},
+              "fill": {"value": "black"},
+              "fillOpacity": {"value": 0.5}
+            },
+            "update": {
+              "size": {"value": 25},
+              "stroke": {"value": "transparent"}
+            },
+            "hover": {
+              "size": {"value": 150},
+              "stroke": {"value": "white"}
+            }
+          }
+        }
+      ]
+    }
+}

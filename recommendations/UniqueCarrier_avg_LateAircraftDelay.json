@@ -1,8 +1,0 @@
-{
-    "columns": ["UniqueCarrier", "LateAircraftDelay"],
-    "transformations": [
-        "avg": "LateAircraftDelay",
-        "groupby": "UniqueCarrier"
-    ],
-    "query": "select UniqueCarrier, avg(LateAircraftDelay) as a from faa where LateAircraftDelay!="" group by UniqueCarrier order by a;"
-}

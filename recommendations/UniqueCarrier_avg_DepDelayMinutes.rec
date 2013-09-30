@@ -1,0 +1,126 @@
+{ 
+    "columns": ["FlightDate", "DepDelayMinutes"],
+    "transformations": [
+    ],
+    "query": "select FlightDate, avg(DepDelayMinutes) from faa group by FlightDate order by FlightDate;",
+    "display": 1,
+    "flagged": 0,
+    "stars": 0,
+    "vega": {
+      "width": 300,
+      "height": 200,
+      "padding": {
+        "top": 10,
+        "left": 70,
+        "bottom": 60,
+        "right": 0
+      },
+      "data": [
+        {
+          "name": "table",
+          "url": "data/UniqueCarrier_avg_DepDelayMinutes.csv",
+          "format": {"type": "csv", "parse": {"a": "number"}}
+        }
+      ],
+      "scales": [
+        {
+          "name": "x",
+          "type": "ordinal",
+          "range": "width",
+          "domain": {
+            "data": "table",
+            "field": "data.UniqueCarrier"
+          }
+        },
+        {
+          "name": "y",
+          "range": "height",
+          "nice": true,
+          "domain": {
+            "data": "table",
+            "field": "data.a"
+          }
+        }
+      ],
+      "axes": [
+        {
+          "type": "x",
+          "scale": "x",
+          "title": "Carrier",
+          "offset": 3,
+          "tickSize": 0,
+          "properties": {
+            "axis": {
+              "stroke": {
+                "value": "transparent"
+              }
+            }
+          }
+        },
+        {
+          "type": "y",
+          "scale": "y",
+          "title": "Average Flight Delay (Minutes)",
+          "titleOffset": 55,
+          "offset": 3,
+          "ticks": 5,
+          "tickSize": 0,
+          "grid": true,
+          "properties": {
+            "grid": {
+              "stroke": {
+                "value": "white"
+              },
+              "strokeWidth": {
+                "value": 2
+              }
+            },
+            "axis": {
+              "stroke": {
+                "value": "transparent"
+              }
+            }
+          }
+        }
+      ],
+      "marks": [
+        {
+          "type": "rect",
+          "from": {
+            "data": "table"
+          },
+          "properties": {
+            "enter": {
+              "x": {
+                "scale": "x",
+                "field": "data.UniqueCarrier"
+              },
+              "width": {
+                "scale": "x",
+                "band": true,
+                "offset": -2
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.a"
+              },
+              "y2": {
+                "scale": "y",
+                "value": 0
+              }
+            },
+            "update": {
+              "fill": {
+                "value": "#ff7f0e"
+              }
+            },
+            "hover": {
+              "fill": {
+                "value": "#ffbb78"
+              }
+            }
+          }
+        }
+      ]
+    }
+}

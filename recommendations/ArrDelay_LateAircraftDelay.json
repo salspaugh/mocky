@@ -1,6 +1,0 @@
-{
-    "columns": ["ArrDelay", "LateAircraftDelay"],
-    "transformations": [
-    ],
-    "query": "select ArrDelay as x, LateAircraftDelay as y from faa where LateAircraftDelay!="" limit 1000;"
-}

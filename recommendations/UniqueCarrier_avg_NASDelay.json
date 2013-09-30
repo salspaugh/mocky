@@ -1,8 +1,0 @@
-{
-    "columns": ["UniqueCarrier", "NASDelay"],
-    "transformations": [
-        "avg": "NASDelay",
-        "groupby": "UniqueCarrier"
-    ],
-    "query": "select UniqueCarrier, avg(NASDelay) as a from faa where NASDelay!="" group by UniqueCarrier order by a;"
-}

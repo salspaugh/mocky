@@ -76,7 +76,7 @@
             <div id="frame_{{ loop.index }}" height="400" width="400"></div>
             <script>
                 function parse(spec) {
-                    var spec = JSON.parse(spec)
+                    var spec = JSON.parse(spec).vega
                     vg.parse.spec(spec, function(chart) { chart({el:"#frame_{{ loop.index }}"}).update(); });
                 }
                 parse({{ spec|tojson|safe }})

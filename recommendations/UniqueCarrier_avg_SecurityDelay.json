@@ -1,8 +1,0 @@
-{
-    "columns": ["UniqueCarrier", "SecurityDelay"],
-    "transformations": [
-        "avg": "SecurityDelay",
-        "groupby": "UniqueCarrier"
-    ],
-    "query": "select UniqueCarrier, avg(SecurityDelay) as a from faa where SecurityDelay!="" group by UniqueCarrier order by a;"
-}

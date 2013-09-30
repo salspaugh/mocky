@@ -1,0 +1,126 @@
+{ 
+    "columns": ["UniqueCarrier", "Cancelled"],
+    "transformations": [
+    ],
+    "query": "select UniqueCarrier, sum(Cancelled)*100.0 / count(*) as s from faa group by UniqueCarrier order by s;",
+    "display": 1,
+    "flagged": 0,
+    "stars": 0,
+    "vega": {
+      "width": 300,
+      "height": 200,
+      "padding": {
+        "top": 10,
+        "left": 70,
+        "bottom": 60,
+        "right": 0
+      },
+      "data": [
+        {
+          "name": "table",
+          "url": "data/UniqueCarrier_sum_Cancelled_times_100_dividedby_count.csv",
+          "format": {"type": "csv", "parse": {"s": "number"}}
+        }
+      ],
+      "scales": [
+        {
+          "name": "x",
+          "type": "ordinal",
+          "range": "width",
+          "domain": {
+            "data": "table",
+            "field": "data.UniqueCarrier"
+          }
+        },
+        {
+          "name": "y",
+          "range": "height",
+          "nice": true,
+          "domain": {
+            "data": "table",
+            "field": "data.s"
+          }
+        }
+      ],
+      "axes": [
+        {
+          "type": "x",
+          "scale": "x",
+          "title": "Carrier",
+          "offset": 3,
+          "tickSize": 0,
+          "properties": {
+            "axis": {
+              "stroke": {
+                "value": "transparent"
+              }
+            }
+          }
+        },
+        {
+          "type": "y",
+          "scale": "y",
+          "title": "Percentage of Flights Cancelled",
+          "titleOffset": 55,
+          "offset": 3,
+          "ticks": 4,
+          "tickSize": 0,
+          "grid": true,
+          "properties": {
+            "grid": {
+              "stroke": {
+                "value": "white"
+              },
+              "strokeWidth": {
+                "value": 2
+              }
+            },
+            "axis": {
+              "stroke": {
+                "value": "transparent"
+              }
+            }
+          }
+        }
+      ],
+      "marks": [
+        {
+          "type": "rect",
+          "from": {
+            "data": "table"
+          },
+          "properties": {
+            "enter": {
+              "x": {
+                "scale": "x",
+                "field": "data.UniqueCarrier"
+              },
+              "width": {
+                "scale": "x",
+                "band": true,
+                "offset": -2
+              },
+              "y": {
+                "scale": "y",
+                "field": "data.s"
+              },
+              "y2": {
+                "scale": "y",
+                "value": 0
+              }
+            },
+            "update": {
+              "fill": {
+                "value": "#31a354"
+              }
+            },
+            "hover": {
+              "fill": {
+                "value": "#a1d99b"
+              }
+            }
+          }
+        }
+      ]
+    }
+}

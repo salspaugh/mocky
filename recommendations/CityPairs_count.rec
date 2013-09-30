@@ -1,0 +1,127 @@
+{ 
+    "columns": ["OriginCityName", "DestCityName"],
+    "transformations": [
+    ],
+    "query": "select a, b, count(*) as c from (select OriginCityName as a, DestCityName as b from faa where OriginCityName > DestCityName union all select DestCityName as a, OriginCityName as b from faa where OriginCityName <= DestCityName) group by a, b order by c;",
+    "display": 1,
+    "flagged": 0,
+    "stars": 0,
+    "vega": {
+      "width": 200,
+      "height": 300,
+      "padding": {
+        "top": 0,
+        "left": 200,
+        "bottom": 45,
+        "right": 10
+      },
+      "data": [
+        {
+          "name": "table",
+          "url": "data/TopCityPairs_count.csv",
+          "format": {"type": "csv", "parse": {"y": "number"}}
+        }
+      ],
+      "scales": [
+        {
+          "name": "x",
+          "type": "ordinal",
+          "range": "height",
+          "domain": {
+            "data": "table",
+            "field": "data.x"
+          }
+        },
+        {
+          "name": "y",
+          "range": "width",
+          "nice": true,
+          "domain": {
+            "data": "table",
+            "field": "data.y"
+          }
+        }
+      ],
+      "axes": [
+        {
+          "type": "x",
+          "scale": "y",
+          "title": "Number of Flights",
+          "titleOffset": 35,
+          "offset": 3,
+          "ticks": 5,
+          "tickSize": 0,
+          "grid": true,
+          "properties": {
+            "grid": {
+              "stroke": {
+                "value": "white"
+              },
+              "strokeWidth": {
+                "value": 2
+              }
+            },
+            "axis": {
+              "stroke": {
+                "value": "transparent"
+              }
+            }
+          }
+        },
+        {
+          "type": "y",
+          "scale": "x",
+          "title": "Top Routes",
+          "titleOffset": 190,
+          "offset": 3,
+          "tickSize": 0,
+          "properties": {
+            "axis": {
+              "stroke": {
+                "value": "transparent"
+              }
+            }
+          }
+        }
+      ],
+      "marks": [
+        {
+          "type": "rect",
+          "from": {
+            "data": "table"
+          },
+          "properties": {
+            "enter": {
+              "y": {
+                "scale": "x",
+                "field": "data.x"
+              },
+              "height": {
+                "scale": "x",
+                "band": true,
+                "offset": -1
+              },
+              "x": {
+                "scale": "y",
+                "field": "data.y"
+              },
+              "x2": {
+                "scale": "y",
+                "value": 0
+              }
+            },
+            "update": {
+              "fill": {
+                "value": "#756bb1"
+              }
+            },
+            "hover": {
+              "fill": {
+                "value": "#9e9ac8"
+              }
+            }
+          }
+        }
+      ]
+    }
+}
