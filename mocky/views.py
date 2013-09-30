@@ -5,14 +5,19 @@ from werkzeug import secure_filename
 from mocky import app
 from mocky import api
 
+import json
+
 @app.route("/", methods=["GET", "POST"])
 def recommendations():
     if request.method == "GET":
         recommendations = api.recommendations() 
     elif request.method == "POST":
+        selected = json.loads(request.form["data"])
         if request.form["remove"]:
-            api.remove_recommendation(request.form["data"])
+            api.remove_recommendation(selected)
             recommendations = api.recommendations()
+        elif request.form["samefields"]:
+            recommendations = api.recommendations_with_these_fields(selected)
     return render_template("index.html", recommendations=recommendations)
 
 @app.route("/data/<path:filename>")

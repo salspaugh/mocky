@@ -7,7 +7,7 @@
   <li><a href="#"><i>Add More Data</i></a></li>
   <li><a href="#"><i>View Flagged</i></a></li>
   <li><a href="#"><i>View Rated</i></a></li>
-  <li><a href="#"><i>View Deleted</i></a></li>
+  <li><a href="#"><i>View Removed</i></a></li>
 </ul>
 {% endblock %}
 
@@ -19,6 +19,7 @@
             <form action="{{ url_for("recommendations") }}" method="post">
             <input type="hidden" name="data" value="">
             <input type="hidden" name="remove" value="">
+            <input type="hidden" name="samefields" value="">
                 <div class="btn-toolbar">
                     <div class="btn btn-mini btn-link"><i class="icon-star-empty star_{{ loop.index }}" id="star1_{{ loop.index }}"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-star-empty star_{{ loop.index }}" id="star2_{{ loop.index }}"></i></div>
@@ -44,6 +45,14 @@
                 </div>            
             </form>
             <script>
+                $("#samefields_{{ loop.index }}").click(function(e) {
+                    var data = {{ spec|tojson|safe }};
+                    var form = $(this).closest("form");
+                    form.find("input[name=data]").val(data);
+                    form.find("input[name=samefields]").val(1);
+                    form.submit();
+                });
+                
                 $("#remove_{{ loop.index }}").click(function(e) {
                     var data = {{ spec|tojson|safe }};
                     var form = $(this).closest("form");
