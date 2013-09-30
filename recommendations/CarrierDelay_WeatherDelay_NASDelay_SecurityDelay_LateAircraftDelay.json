@@ -1,0 +1,6 @@
+{
+    "columns": ["CarrierDelay", "WeatherDelay", "NASDelay", "SecurityDelay", "LateAircraftDelay"],
+    "transformations": [
+    ],
+    "query": "select CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay from faa where CarrierDelay!="" limit 1000;"
+}

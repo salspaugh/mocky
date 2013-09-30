@@ -1,0 +1,8 @@
+{
+    "columns": ["UniqueCarrier", "WeatherDelay"],
+    "transformations": [
+        "avg": "WeatherDelay",
+        "groupby": "UniqueCarrier"
+    ],
+    "query": "select UniqueCarrier, avg(WeatherDelay) as a from faa where WeatherDelay!="" group by UniqueCarrier order by a;"
+}

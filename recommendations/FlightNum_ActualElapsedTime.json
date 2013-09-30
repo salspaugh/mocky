@@ -1,0 +1,6 @@
+{
+    "columns": ["FlightNum", "ActualElapsedTime"],
+    "transformations": [
+    ],
+    "query": "select FlightNum as x, ActualElapsedTime as y from faa where ActualElapsedTime!="" limit 1000;"
+}

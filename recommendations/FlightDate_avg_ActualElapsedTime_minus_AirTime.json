@@ -1,0 +1,10 @@
+{
+    "columns": ["FlightDate", "ActualElapsedTime", "AirTime"],
+    "transformations": [
+        {
+            "minus": ["ActualElapsedTime", "AirTime"],
+            "avg": ""
+        }
+    ],
+    "query": "select FlightDate, avg(ActualElapsedTime-AirTime) as a from faa group by FlightDate;"
+}

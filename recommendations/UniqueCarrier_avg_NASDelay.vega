@@ -10,8 +10,8 @@
   "data": [
     {
       "name": "table",
-      "url": "data/UniqueCarrier_avg_DepDelayMinutes.csv",
-      "format": {"type": "csv", "parse": {"a": "number"}}
+      "url": "data/UniqueCarrier_avg_NASDelay.csv",
+      "format": {"type": "csv", "parse": {"s": "number"}}
     }
   ],
   "scales": [
@@ -30,7 +30,7 @@
       "nice": true,
       "domain": {
         "data": "table",
-        "field": "data.a"
+        "field": "data.s"
       }
     }
   ],
@@ -52,10 +52,10 @@
     {
       "type": "y",
       "scale": "y",
-      "title": "Average Flight Delay (Minutes)",
+      "title": "Average NAS Delay (Minutes)",
       "titleOffset": 55,
       "offset": 3,
-      "ticks": 5,
+      "ticks": 4,
       "tickSize": 0,
       "grid": true,
       "properties": {
@@ -94,7 +94,7 @@
           },
           "y": {
             "scale": "y",
-            "field": "data.a"
+            "field": "data.s"
           },
           "y2": {
             "scale": "y",
@@ -103,12 +103,12 @@
         },
         "update": {
           "fill": {
-            "value": "#ff7f0e"
+            "value": "steelblue"
           }
         },
         "hover": {
           "fill": {
-            "value": "#ffbb78"
+            "value": "lightsteelblue"
           }
         }
       }

@@ -15,7 +15,6 @@ def recommendations():
 
 @app.route("/data/<path:filename>")
 def data(filename):
-    print "HERE"
     return send_from_directory("data", filename) 
 
 

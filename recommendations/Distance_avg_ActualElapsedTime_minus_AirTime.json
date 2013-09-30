@@ -1,0 +1,10 @@
+{
+    "columns": ["Distance", "ActualElapsedTime", "AirTime"],
+    "transformations": [
+        {
+            "minus": ["ActualElapsedTime", "AirTime"],
+            "avg": ""
+        }
+    ],
+    "query": "select Distance as d, avg(ActualElapsedTime-AirTime) as y from faa group by Distance;"
+}
