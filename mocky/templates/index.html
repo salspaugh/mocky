@@ -20,6 +20,7 @@
             <input type="hidden" name="data" value="">
             <input type="hidden" name="remove" value="">
             <input type="hidden" name="samefields" value="">
+            <input type="hidden" name="samemarks" value="">
                 <div class="btn-toolbar">
                     <div class="btn btn-mini btn-link"><i class="icon-star-empty star_{{ loop.index }}" id="star1_{{ loop.index }}"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-star-empty star_{{ loop.index }}" id="star2_{{ loop.index }}"></i></div>
@@ -38,8 +39,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" href="#" id="samefields_{{ loop.index }}">Same fields</a></li>
-                            <li><a tabindex="-1" href="#">Same marks</a></li>
-                            <li><a tabindex="-1" href="#">Same transformations</a></li>
+                            <li><a tabindex="-1" href="#" id="samemarks_{{ loop.index }}">Same marks</a></li>
+                            <li><a tabindex="-1" href="#" id="sametrans_{{ loop.index }}">Same transformations</a></li>
                         </ul>
                     </div>
                 </div>            
@@ -50,6 +51,14 @@
                     var form = $(this).closest("form");
                     form.find("input[name=data]").val(data);
                     form.find("input[name=samefields]").val(1);
+                    form.submit();
+                });
+                
+                $("#samemarks_{{ loop.index }}").click(function(e) {
+                    var data = {{ spec|tojson|safe }};
+                    var form = $(this).closest("form");
+                    form.find("input[name=data]").val(data);
+                    form.find("input[name=samemarks]").val(1);
                     form.submit();
                 });
                 

@@ -18,6 +18,8 @@ def recommendations():
             recommendations = api.recommendations()
         elif request.form["samefields"]:
             recommendations = api.recommendations_with_these_fields(selected)
+        elif request.form["samemarks"]:
+            recommendations = api.recommendations_with_these_marks(selected)
     return render_template("index.html", recommendations=recommendations)
 
 @app.route("/data/<path:filename>")
