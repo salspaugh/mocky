@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/UniqueCarrier_avg_DepDelayMinutes.rec",
     "columns": ["FlightDate", "DepDelayMinutes"],
     "transformations": [
     ],

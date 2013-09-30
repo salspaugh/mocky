@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/DayOfWeek_avg_count.rec",
     "columns": ["DayOfWeek"],
     "transformations": [
     ],

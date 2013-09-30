@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/FlightDate_count.rec",
     "columns": ["FlightDate"],
     "transformations": [
         {

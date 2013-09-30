@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/Distance_avg_ActualElapsedTime_minus_AirTime.rec",
     "columns": ["Distance", "ActualElapsedTime", "AirTime"],
     "transformations": [
         {

@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/ArrDelayMinutes_LateAircraftDelay.rec",
     "columns": ["ArrDelayMinutes", "LateAircraftDelay"],
     "transformations": [
     ],

@@ -6,6 +6,8 @@
   <li><a href="#">FAA On-Time Performance</a></li>
   <li><a href="#"><i>Add More Data</i></a></li>
   <li><a href="#"><i>View Flagged</i></a></li>
+  <li><a href="#"><i>View Rated</i></a></li>
+  <li><a href="#"><i>View Deleted</i></a></li>
 </ul>
 {% endblock %}
 
@@ -16,6 +18,7 @@
             <a name="{{ loop.index }}"></a>
             <form action="{{ url_for("recommendations") }}" method="post">
             <input type="hidden" name="data" value="">
+            <input type="hidden" name="remove" value="">
                 <div class="btn-toolbar">
                     <div class="btn btn-mini btn-link"><i class="icon-star-empty star_{{ loop.index }}" id="star1_{{ loop.index }}"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-star-empty star_{{ loop.index }}" id="star2_{{ loop.index }}"></i></div>
@@ -26,7 +29,7 @@
                     <div class="btn btn-mini btn-link"><i class="icon-edit"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-folder-open"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-flag icon-white" id="flag_{{ loop.index }}"></i></div>
-                    <div class="btn btn-mini btn-link"><i class="icon-remove"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-remove" id="remove_{{ loop.index }}"></i></div>
                     <div class="btn-group">
                         <a class="btn btn-mini btn-link dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="icon-search"></i>
@@ -41,6 +44,14 @@
                 </div>            
             </form>
             <script>
+                $("#remove_{{ loop.index }}").click(function(e) {
+                    var data = {{ spec|tojson|safe }};
+                    var form = $(this).closest("form");
+                    form.find("input[name=data]").val(data);
+                    form.find("input[name=remove]").val(1);
+                    form.submit();
+                });
+
                 $("#flag_{{ loop.index }}").click(function(e) {
                     $(this).toggleClass("icon-white");
                 });

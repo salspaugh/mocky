@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/UniqueCarrier_sum_Cancelled.rec",
     "columns": ["UniqueCarrier", "Cancelled"],
     "transformations": [
     ],

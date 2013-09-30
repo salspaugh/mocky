@@ -10,7 +10,9 @@ def recommendations():
     if request.method == "GET":
         recommendations = api.recommendations() 
     elif request.method == "POST":
-        recommendations = api.recommendations_like_this(request.form["data"])
+        if request.form["remove"]:
+            api.remove_recommendation(request.form["data"])
+            recommendations = api.recommendations()
     return render_template("index.html", recommendations=recommendations)
 
 @app.route("/data/<path:filename>")

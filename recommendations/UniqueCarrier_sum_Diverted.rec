@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/UniqueCarrier_sum_Diverted.rec",
     "columns": ["UniqueCarrier", "Diverted"],
     "transformations": [
     ],

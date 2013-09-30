@@ -1,4 +1,5 @@
-{ 
+{
+    "filename": "recommendations/UniqueCarrier_count.rec",
     "columns": ["UniqueCarrier"],
     "transformations": [
     ],
