@@ -1,191 +1,192 @@
 {
+    "flagged": 0,
+    "transformations": [],
     "filename": "recommendations/UniqueCarrier_count.rec",
-    "columns": ["UniqueCarrier"],
-    "transformations": [
-    ],
+    "vega": {
+        "scales": [
+            {
+                "range": "width",
+                "type": "ordinal",
+                "name": "x",
+                "domain": {
+                    "field": "data.UniqueCarrier",
+                    "data": "table"
+                }
+            },
+            {
+                "range": "height",
+                "name": "y",
+                "domain": {
+                    "field": "data.c",
+                    "data": "table"
+                },
+                "nice": true
+            }
+        ],
+        "axes": [
+            {
+                "scale": "x",
+                "title": "Carrier",
+                "tickSize": 0,
+                "offset": 3,
+                "type": "x",
+                "properties": {
+                    "axis": {
+                        "stroke": {
+                            "value": "transparent"
+                        }
+                    }
+                }
+            },
+            {
+                "scale": "y",
+                "title": "Number of Flights",
+                "ticks": 4,
+                "titleOffset": 55,
+                "tickSize": 0,
+                "offset": 3,
+                "grid": true,
+                "type": "y",
+                "properties": {
+                    "grid": {
+                        "stroke": {
+                            "value": "white"
+                        },
+                        "strokeWidth": {
+                            "value": 2
+                        }
+                    },
+                    "axis": {
+                        "stroke": {
+                            "value": "transparent"
+                        }
+                    }
+                }
+            }
+        ],
+        "height": 200,
+        "padding": {
+            "top": 10,
+            "right": 0,
+            "left": 70,
+            "bottom": 60
+        },
+        "width": 300,
+        "marks": [
+            {
+                "type": "rect",
+                "from": {
+                    "data": "table"
+                },
+                "properties": {
+                    "hover": {
+                        "fill": {
+                            "value": "#ffbb78"
+                        }
+                    },
+                    "update": {
+                        "fill": {
+                            "value": "#ff7f0e"
+                        }
+                    },
+                    "enter": {
+                        "y": {
+                            "field": "data.c",
+                            "scale": "y"
+                        },
+                        "x": {
+                            "field": "data.UniqueCarrier",
+                            "scale": "x"
+                        },
+                        "y2": {
+                            "scale": "y",
+                            "value": 0
+                        },
+                        "width": {
+                            "band": true,
+                            "scale": "x",
+                            "offset": -2
+                        }
+                    }
+                }
+            }
+        ],
+        "data": [
+            {
+                "values": [
+                    {
+                        "UniqueCarrier": "VX",
+                        "c": "4230"
+                    },
+                    {
+                        "UniqueCarrier": "F9",
+                        "c": "5804"
+                    },
+                    {
+                        "UniqueCarrier": "HA",
+                        "c": "5982"
+                    },
+                    {
+                        "UniqueCarrier": "YV",
+                        "c": "10647"
+                    },
+                    {
+                        "UniqueCarrier": "AS",
+                        "c": "12020"
+                    },
+                    {
+                        "UniqueCarrier": "FL",
+                        "c": "15313"
+                    },
+                    {
+                        "UniqueCarrier": "B6",
+                        "c": "19291"
+                    },
+                    {
+                        "UniqueCarrier": "9E",
+                        "c": "23658"
+                    },
+                    {
+                        "UniqueCarrier": "US",
+                        "c": "33567"
+                    },
+                    {
+                        "UniqueCarrier": "MQ",
+                        "c": "37693"
+                    },
+                    {
+                        "UniqueCarrier": "UA",
+                        "c": "40419"
+                    },
+                    {
+                        "UniqueCarrier": "AA",
+                        "c": "44848"
+                    },
+                    {
+                        "UniqueCarrier": "OO",
+                        "c": "51762"
+                    },
+                    {
+                        "UniqueCarrier": "DL",
+                        "c": "57182"
+                    },
+                    {
+                        "UniqueCarrier": "EV",
+                        "c": "57934"
+                    },
+                    {
+                        "UniqueCarrier": "WN",
+                        "c": "89169"
+                    }
+                ],
+                "name": "table"
+            }
+        ]
+    },
+    "stars": 0,
     "query": "select UniqueCarrier, count(*) as c from faa group by UniqueCarrier order by c;",
     "display": 1,
-    "flagged": 0,
-    "stars": 0,
-    "vega": {
-      "width": 300,
-      "height": 200,
-      "padding": {
-        "top": 10,
-        "left": 70,
-        "bottom": 60,
-        "right": 0
-      },
-      "data": [
-        {
-          "name": "table",
-          "values": [
-            {
-              "UniqueCarrier": "VX",
-              "c": "4230"
-            },
-            {
-              "UniqueCarrier": "F9",
-              "c": "5804"
-            },
-            {
-              "UniqueCarrier": "HA",
-              "c": "5982"
-            },
-            {
-              "UniqueCarrier": "YV",
-              "c": "10647"
-            },
-            {
-              "UniqueCarrier": "AS",
-              "c": "12020"
-            },
-            {
-              "UniqueCarrier": "FL",
-              "c": "15313"
-            },
-            {
-              "UniqueCarrier": "B6",
-              "c": "19291"
-            },
-            {
-              "UniqueCarrier": "9E",
-              "c": "23658"
-            },
-            {
-              "UniqueCarrier": "US",
-              "c": "33567"
-            },
-            {
-              "UniqueCarrier": "MQ",
-              "c": "37693"
-            },
-            {
-              "UniqueCarrier": "UA",
-              "c": "40419"
-            },
-            {
-              "UniqueCarrier": "AA",
-              "c": "44848"
-            },
-            {
-              "UniqueCarrier": "OO",
-              "c": "51762"
-            },
-            {
-              "UniqueCarrier": "DL",
-              "c": "57182"
-            },
-            {
-              "UniqueCarrier": "EV",
-              "c": "57934"
-            },
-            {
-              "UniqueCarrier": "WN",
-              "c": "89169"
-            } 
-          ]
-        }
-      ],
-      "scales": [
-        {
-          "name": "x",
-          "type": "ordinal",
-          "range": "width",
-          "domain": {
-            "data": "table",
-            "field": "data.UniqueCarrier"
-          }
-        },
-        {
-          "name": "y",
-          "range": "height",
-          "nice": true,
-          "domain": {
-            "data": "table",
-            "field": "data.c"
-          }
-        }
-      ],
-      "axes": [
-        {
-          "type": "x",
-          "scale": "x",
-          "title": "Carrier",
-          "offset": 3,
-          "tickSize": 0,
-          "properties": {
-            "axis": {
-              "stroke": {
-                "value": "transparent"
-              }
-            }
-          }
-        },
-        {
-          "type": "y",
-          "scale": "y",
-          "title": "Number of Flights",
-          "titleOffset": 55,
-          "offset": 3,
-          "ticks": 4,
-          "tickSize": 0,
-          "grid": true,
-          "properties": {
-            "grid": {
-              "stroke": {
-                "value": "white"
-              },
-              "strokeWidth": {
-                "value": 2
-              }
-            },
-            "axis": {
-              "stroke": {
-                "value": "transparent"
-              }
-            }
-          }
-        }
-      ],
-      "marks": [
-        {
-          "type": "rect",
-          "from": {
-            "data": "table"
-          },
-          "properties": {
-            "enter": {
-              "x": {
-                "scale": "x",
-                "field": "data.UniqueCarrier"
-              },
-              "width": {
-                "scale": "x",
-                "band": true,
-                "offset": -2
-              },
-              "y": {
-                "scale": "y",
-                "field": "data.c"
-              },
-              "y2": {
-                "scale": "y",
-                "value": 0
-              }
-            },
-            "update": {
-              "fill": {
-                "value": "#ff7f0e"
-              }
-            },
-            "hover": {
-              "fill": {
-                "value": "#ffbb78"
-              }
-            }
-          }
-        }
-      ]
-    }
+    "columns": [
+        "UniqueCarrier"
+    ]
 }

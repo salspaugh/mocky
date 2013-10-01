@@ -1,1 +1,123 @@
-{"flagged": 0, "transformations": [], "vega": {"scales": [{"range": "width", "name": "x", "domain": {"field": "data.x", "data": "table"}, "nice": true}, {"range": "height", "name": "y", "domain": {"field": "data.y", "data": "table"}, "nice": true}], "axes": [{"title": "Air Time (Minutes)", "scale": "x", "type": "x", "ticks": 5, "offset": 5}, {"title": "Actual Elapsed Flight Time (Minutes)", "scale": "y", "type": "y", "ticks": 5, "offset": 5}], "height": 200, "width": 200, "marks": [{"from": {"data": "table"}, "type": "symbol", "properties": {"hover": {"stroke": {"value": "white"}, "size": {"value": 150}}, "update": {"stroke": {"value": "transparent"}, "size": {"value": 25}}, "enter": {"y": {"field": "data.y", "scale": "y"}, "x": {"field": "data.x", "scale": "x"}, "fillOpacity": {"value": 0.5}, "fill": {"value": "black"}}}}], "data": [{"url": "data/AirTime_ActualElapsedTime.csv", "name": "table", "format": {"parse": {"y": "number", "x": "number"}, "type": "csv"}}]}, "filename": "recommendations/AirTime_ActualElapsedTime.rec", "stars": 0, "filters": [{"f0": ["x!=''", {"x": "ActualElapsedTime"}], "f1": ["limit x", {"x": 1000}]}], "query": "select AirTime as x, ActualElapsedTime as y from faa where ActualElapsedTime!='' limit 1000;", "display": 0, "columns": ["AirTime", "ActualElapsedTime"]}
+{
+    "stars": 0,
+    "display": 1,
+    "filename": "recommendations/AirTime_ActualElapsedTime.rec",
+    "vega": {
+        "scales": [
+            {
+                "range": "width",
+                "name": "x",
+                "domain": {
+                    "field": "data.x",
+                    "data": "table"
+                },
+                "nice": true
+            },
+            {
+                "range": "height",
+                "name": "y",
+                "domain": {
+                    "field": "data.y",
+                    "data": "table"
+                },
+                "nice": true
+            }
+        ],
+        "axes": [
+            {
+                "scale": "x",
+                "type": "x",
+                "ticks": 5,
+                "offset": 5,
+                "title": "Air Time (Minutes)"
+            },
+            {
+                "scale": "y",
+                "type": "y",
+                "ticks": 5,
+                "offset": 5,
+                "title": "Actual Elapsed Flight Time (Minutes)"
+            }
+        ],
+        "height": 200,
+        "width": 200,
+        "marks": [
+            {
+                "type": "symbol",
+                "from": {
+                    "data": "table"
+                },
+                "properties": {
+                    "hover": {
+                        "stroke": {
+                            "value": "white"
+                        },
+                        "size": {
+                            "value": 150
+                        }
+                    },
+                    "update": {
+                        "stroke": {
+                            "value": "transparent"
+                        },
+                        "size": {
+                            "value": 25
+                        }
+                    },
+                    "enter": {
+                        "y": {
+                            "field": "data.y",
+                            "scale": "y"
+                        },
+                        "x": {
+                            "field": "data.x",
+                            "scale": "x"
+                        },
+                        "fillOpacity": {
+                            "value": 0.5
+                        },
+                        "fill": {
+                            "value": "black"
+                        }
+                    }
+                }
+            }
+        ],
+        "data": [
+            {
+                "url": "data/AirTime_ActualElapsedTime.csv",
+                "name": "table",
+                "format": {
+                    "parse": {
+                        "y": "number",
+                        "x": "number"
+                    },
+                    "type": "csv"
+                }
+            }
+        ]
+    },
+    "filters": [
+        {
+            "f0": [
+                "x!=''",
+                {
+                    "x": "ActualElapsedTime"
+                }
+            ],
+            "f1": [
+                "limit x",
+                {
+                    "x": 1000
+                }
+            ]
+        }
+    ],
+    "query": "select AirTime as x, ActualElapsedTime as y from faa where ActualElapsedTime!='' limit 1000;",
+    "flagged": 0,
+    "columns": [
+        "AirTime",
+        "ActualElapsedTime"
+    ],
+    "transformations": []
+}
