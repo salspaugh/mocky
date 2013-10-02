@@ -19,6 +19,7 @@
             <form action="{{ url_for("recommendations") }}" method="post">
             <input type="hidden" name="data" value="">
             <input type="hidden" name="remove" value="">
+            <input type="hidden" name="save" value="">
             <input type="hidden" name="samefields" value="">
             <input type="hidden" name="samemarks" value="">
                 <div class="btn-toolbar">
@@ -29,7 +30,7 @@
                     <div class="btn btn-mini btn-link"><i class="icon-star-empty star_{{ loop.index }}" id="star5_{{ loop.index }}"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-info-sign"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-edit"></i></div>
-                    <div class="btn btn-mini btn-link"><i class="icon-folder-open"></i></div>
+                    <div class="btn btn-mini btn-link"><i class="icon-folder-open" id="save_{{ loop.index }}"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-flag icon-white" id="flag_{{ loop.index }}"></i></div>
                     <div class="btn btn-mini btn-link"><i class="icon-remove" id="remove_{{ loop.index }}"></i></div>
                     <div class="btn-group">
@@ -46,6 +47,8 @@
                 </div>            
             </form>
             <script>
+                $(".span_{{ loop.index }}").draggable();
+                
                 $("#samefields_{{ loop.index }}").click(function(e) {
                     var data = {{ spec|tojson|safe }};
                     var form = $(this).closest("form");
@@ -62,6 +65,14 @@
                     form.submit();
                 });
                 
+                $("#save_{{ loop.index }}").click(function(e) {
+                    var data = {{ spec|tojson|safe }};
+                    var form = $(this).closest("form");
+                    form.find("input[name=data]").val(data);
+                    form.find("input[name=save]").val(1);
+                    form.submit();
+                });
+                
                 $("#remove_{{ loop.index }}").click(function(e) {
                     var data = {{ spec|tojson|safe }};
                     var form = $(this).closest("form");
@@ -72,13 +83,6 @@
 
                 $("#flag_{{ loop.index }}").click(function(e) {
                     $(this).toggleClass("icon-white");
-                });
-                
-                $("#samefields_{{ loop.index }}").click(function(e) {
-                    var data = {{ spec|tojson|safe }};
-                    var form = $(this).closest("form");
-                    form.find("input[name=data]").val(data);
-                    form.submit();
                 });
 
                 $(".star_{{ loop.index }}").click(function(e) {
